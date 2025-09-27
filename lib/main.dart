@@ -3,6 +3,8 @@ import 'view/splash/splash_screen.dart';
 import 'view/auth/login_register_screen.dart';
 import 'view/auth/login_screen.dart';
 import 'view/auth/register_screen.dart';
+import 'view/auth/email_verification_screen.dart';
+import 'view/auth/email_verification_success_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,6 +28,11 @@ class MyApp extends StatelessWidget {
         '/login_register': (context) => const LoginRegisterScreen(),
         '/login': (context) => const LoginScreen(),
         '/register': (context) => const RegisterScreen(),
+        '/email-verification': (context) {
+          final email = ModalRoute.of(context)!.settings.arguments as String;
+          return EmailVerificationScreen(email: email);
+        },
+        '/email-verification-success': (context) => const EmailVerificationSuccessScreen(),
       },
     );
   }
