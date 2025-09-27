@@ -106,13 +106,13 @@ class _MessagesScreenState extends State<MessagesScreen> {
       backgroundColor: Colors.white,
       elevation: 0,
       leading: IconButton(
-        icon: const Icon(Icons.arrow_back_ios, color: Colors.black87),
+        icon: const Icon(Icons.arrow_back_ios, color: Colors.black87, size: 18),
         onPressed: () => Navigator.pop(context),
       ),
       title: const Text(
         'Messages',
         style: TextStyle(
-          fontSize: 18,
+          fontSize: 16,
           fontWeight: FontWeight.w500,
           color: Colors.black87,
         ),
@@ -120,7 +120,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
       centerTitle: true,
       actions: [
         IconButton(
-          icon: const Icon(Icons.edit, color: Colors.black87),
+          icon: const Icon(Icons.edit, color: Colors.black87, size: 18),
           onPressed: () {
             // Edit messages
           },
@@ -131,20 +131,20 @@ class _MessagesScreenState extends State<MessagesScreen> {
 
   Widget _buildSearchBar() {
     return Container(
-      margin: const EdgeInsets.all(16),
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      margin: const EdgeInsets.all(12),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 0),
       decoration: BoxDecoration(
         color: Colors.grey[100],
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(6),
       ),
       child: Row(
         children: [
           const Icon(
             Icons.search,
             color: Colors.grey,
-            size: 20,
+            size: 16,
           ),
-          const SizedBox(width: 12),
+          const SizedBox(width: 8),
           Expanded(
             child: TextField(
               controller: _searchController,
@@ -152,13 +152,13 @@ class _MessagesScreenState extends State<MessagesScreen> {
                 hintText: 'Search',
                 hintStyle: TextStyle(
                   color: Colors.grey,
-                  fontSize: 16,
+                  fontSize: 14,
                 ),
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.zero,
               ),
               style: const TextStyle(
-                fontSize: 16,
+                fontSize: 14,
                 color: Colors.black87,
               ),
             ),
@@ -169,73 +169,85 @@ class _MessagesScreenState extends State<MessagesScreen> {
   }
 
   Widget _buildMessageItem(Map<String, dynamic> message) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      child: Row(
-        children: [
-          // Avatar
-          CircleAvatar(
-            radius: 25,
-            backgroundImage: NetworkImage(message['avatar']),
-            backgroundColor: Colors.grey[300],
-          ),
-          const SizedBox(width: 12),
-          // Message content
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      message['name'],
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: message['hasUnread'] 
-                            ? const Color(0xFF6B46C1) 
-                            : Colors.black87,
-                      ),
-                    ),
-                    const Spacer(),
-                    Text(
-                      message['time'],
-                      style: const TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 4),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        message['message'],
-                        style: const TextStyle(
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          '/chat',
+          arguments: {
+            'contactName': message['name'],
+            'contactAvatar': message['avatar'],
+          },
+        );
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        child: Row(
+          children: [
+            // Avatar
+            CircleAvatar(
+              radius: 18,
+              backgroundImage: NetworkImage(message['avatar']),
+              backgroundColor: Colors.grey[300],
+            ),
+            const SizedBox(width: 10),
+            // Message content
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        message['name'],
+                        style: TextStyle(
                           fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          color: message['hasUnread'] 
+                              ? const Color(0xFF6B46C1) 
+                              : Colors.black87,
+                        ),
+                      ),
+                      const Spacer(),
+                      Text(
+                        message['time'],
+                        style: const TextStyle(
+                          fontSize: 12,
                           color: Colors.grey,
                         ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
                       ),
-                    ),
-                    if (message['hasUnread'])
-                      Container(
-                        width: 8,
-                        height: 8,
-                        decoration: const BoxDecoration(
-                          color: Color(0xFFFF6B35),
-                          shape: BoxShape.circle,
+                    ],
+                  ),
+                  const SizedBox(height: 2),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          message['message'],
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                  ],
-                ),
-              ],
+                      if (message['hasUnread'])
+                        Container(
+                          width: 6,
+                          height: 6,
+                          decoration: const BoxDecoration(
+                            color: Color(0xFFFF6B35),
+                            shape: BoxShape.circle,
+                          ),
+                        ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
