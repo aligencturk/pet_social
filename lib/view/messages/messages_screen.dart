@@ -9,7 +9,6 @@ class MessagesScreen extends StatefulWidget {
 
 class _MessagesScreenState extends State<MessagesScreen> {
   final TextEditingController _searchController = TextEditingController();
-  int _currentIndex = 0;
 
   final List<Map<String, dynamic>> _messages = [
     {
@@ -97,7 +96,6 @@ class _MessagesScreenState extends State<MessagesScreen> {
           ),
         ],
       ),
-      bottomNavigationBar: _buildBottomNavigationBar(),
     );
   }
 
@@ -252,59 +250,4 @@ class _MessagesScreenState extends State<MessagesScreen> {
     );
   }
 
-  Widget _buildBottomNavigationBar() {
-    return BottomNavigationBar(
-      currentIndex: _currentIndex,
-      onTap: (index) {
-        setState(() {
-          _currentIndex = index;
-        });
-        // Navigate to different screens
-        switch (index) {
-          case 0:
-            Navigator.pushReplacementNamed(context, '/home');
-            break;
-          case 1:
-            // Navigate to Discover
-            break;
-          case 2:
-            // Navigate to New Post
-            break;
-          case 3:
-            // Navigate to Community
-            break;
-          case 4:
-            // Navigate to Profile
-            break;
-        }
-      },
-      type: BottomNavigationBarType.fixed,
-      selectedItemColor: const Color(0xFF6B46C1),
-      unselectedItemColor: Colors.grey,
-      backgroundColor: Colors.white,
-      elevation: 8,
-      items: const [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: 'Home',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.search),
-          label: 'Discover',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.add_circle_outline),
-          label: 'New Post',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.people),
-          label: 'Community',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.person),
-          label: 'Profile',
-        ),
-      ],
-    );
-  }
 }

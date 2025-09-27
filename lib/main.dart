@@ -9,9 +9,10 @@ import 'view/auth/forgot_password_screen.dart';
 import 'view/auth/reset_password_screen.dart';
 import 'view/auth/password_changed_success_screen.dart';
 import 'view/onboarding/interests_screen.dart';
-import 'view/home/home_screen.dart';
-import 'view/messages/messages_screen.dart';
+import 'view/main_navigation_screen.dart';
 import 'view/messages/chat_screen.dart';
+import 'view/messages/messages_screen.dart';
+import 'view/notifications/notifications_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,15 +32,16 @@ class MyApp extends StatelessWidget {
       ),
       home: const SplashScreen(),
       routes: {
-        '/home': (context) => const HomeScreen(),
-        '/messages': (context) => const MessagesScreen(),
+        '/home': (context) => const MainNavigationScreen(),
         '/chat': (context) {
           final args = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
           return ChatScreen(
             contactName: args['contactName'],
             contactAvatar: args['contactAvatar'],
-          );
+          );  
         },
+        '/messages': (context) => const MessagesScreen(),
+        '/notifications': (context) => const NotificationsScreen(),
         '/login_register': (context) => const LoginRegisterScreen(),
         '/login': (context) => const LoginScreen(),
         '/register': (context) => const RegisterScreen(),
