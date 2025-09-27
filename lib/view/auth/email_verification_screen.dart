@@ -50,8 +50,8 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
   void _onVerifyPressed() {
     String otp = _controllers.map((controller) => controller.text).join();
     if (otp.length == 5) {
-      // OTP doğrulama işlemi - Success ekranına yönlendir
-      Navigator.pushReplacementNamed(context, '/email-verification-success');
+      // OTP doğrulama işlemi - Reset password ekranına yönlendir
+      Navigator.pushReplacementNamed(context, '/reset-password');
     } else {
       // Hata mesajı göster
       ScaffoldMessenger.of(context).showSnackBar(

@@ -250,12 +250,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 height: 44,
                 child: ElevatedButton(
                   onPressed: _agreeToTerms ? () {
-                    // Register işlemi - Email verification ekranına yönlendir
-                    Navigator.pushNamed(
-                      context, 
-                      '/email-verification',
-                      arguments: _emailController.text,
-                    );
+                    // Register işlemi - Interests ekranına yönlendir
+                    Navigator.pushReplacementNamed(context, '/interests');
                   } : null,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFFFF6B35), // Turuncu
