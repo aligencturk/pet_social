@@ -95,7 +95,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
   Widget _buildSearchBar() {
     return Container(
       margin: const EdgeInsets.all(16),
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 1),
       decoration: BoxDecoration(
         color: const Color(0xFFF8F8FC),
         borderRadius: BorderRadius.circular(12),

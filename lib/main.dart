@@ -11,6 +11,8 @@ import 'view/auth/password_changed_success_screen.dart';
 import 'view/onboarding/interests_screen.dart';
 import 'view/main_navigation_screen.dart';
 import 'view/messages/chat_screen.dart';
+import 'view/profile/edit_profile_screen.dart';
+import 'view/profile/settings_screen.dart';
 import 'view/messages/messages_screen.dart';
 import 'view/notifications/notifications_screen.dart';
 
@@ -42,6 +44,8 @@ class MyApp extends StatelessWidget {
         },
         '/messages': (context) => const MessagesScreen(),
         '/notifications': (context) => const NotificationsScreen(),
+        '/edit-profile': (context) => const EditProfileScreen(),
+        '/settings': (context) => const SettingsScreen(),
         '/login_register': (context) => const LoginRegisterScreen(),
         '/login': (context) => const LoginScreen(),
         '/register': (context) => const RegisterScreen(),
