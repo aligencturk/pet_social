@@ -129,7 +129,9 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             IconButton(
               icon: const Icon(Icons.message_outlined, color: Colors.black),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/messages');
+              },
             ),
             Positioned(
               right: 8,

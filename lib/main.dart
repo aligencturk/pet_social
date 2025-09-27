@@ -10,6 +10,7 @@ import 'view/auth/reset_password_screen.dart';
 import 'view/auth/password_changed_success_screen.dart';
 import 'view/onboarding/interests_screen.dart';
 import 'view/home/home_screen.dart';
+import 'view/messages/messages_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
       home: const SplashScreen(),
       routes: {
         '/home': (context) => const HomeScreen(),
+        '/messages': (context) => const MessagesScreen(),
         '/login_register': (context) => const LoginRegisterScreen(),
         '/login': (context) => const LoginScreen(),
         '/register': (context) => const RegisterScreen(),
