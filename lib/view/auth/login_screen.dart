@@ -143,6 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: TextButton(
                   onPressed: () {
                     // Şifremi unuttum sayfasına yönlendir
+                    Navigator.pushNamed(context, '/forgot-password');
                   },
                   child: const Text(
                     'Forgot password?',
